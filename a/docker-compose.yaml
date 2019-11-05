@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   nginx:
@@ -11,6 +11,11 @@ services:
     container_name: app-a
     networks:
       - app-a-network
+    extra_hosts:
+      - "service-b:172.16.1.1"
 
 networks:
   app-a-network:
+  default:
+    external:
+      name: b_app-b-network
